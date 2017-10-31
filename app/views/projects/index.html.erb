@@ -4,15 +4,7 @@
 
 <h2>Projects funded: <%= @projects_funded.count %> projects</h2>
 
-<%
-  successful_projects = []
-  @pledges.each do |pledge|
-    unless projects.include?(pledge.project.title)
-      projects << pledge.project.title
-    end
-  end
-%>
-<h2>Successful Projects got a total of $<%= projects.count %></h2>
+<h2>Successful Projects got a total of $<%= @projects.count %></h2>
 
 
 

@@ -8,10 +8,11 @@ class ProjectsController < ApplicationController
 
     @projects_funded = []
     @pledges.each do |pledge|
-      unless projects.include?(pledge.project)
-        projects << pledge.project
+      unless @projects_funded.include?(pledge.project)
+        @projects_funded << pledge.project
       end
     end
+    
   end
 
   def show
