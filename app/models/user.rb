@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-
+  
+  has_many :projects
+  has_many :pledges
+  has_many :backed_projects, through: :pledges, source: :project
 
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
@@ -7,5 +10,6 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, on: :create
   validates :password_confirmation, presence: true, on: :create
   has_secure_password
+  validates :email, uniqueness: true
 
 end
