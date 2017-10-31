@@ -1,5 +1,24 @@
 <%= link_to "New Project", new_project_path %>
 
+<h2>Number of projects started so far: <%= @projects.count %> projects</h2>
+
+<h2>Projects funded: <%= @projects_funded.count %> projects</h2>
+
+<%
+  successful_projects = []
+  @pledges.each do |pledge|
+    unless projects.include?(pledge.project.title)
+      projects << pledge.project.title
+    end
+  end
+%>
+<h2>Successful Projects got a total of $<%= projects.count %></h2>
+
+
+
+
+
+
 <% @projects.each do |project| %>
   <article class="project">
     <%= link_to project, class: 'project-link' do %>

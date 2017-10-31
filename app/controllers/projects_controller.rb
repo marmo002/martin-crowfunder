@@ -4,6 +4,14 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @projects = @projects.order(:end_date)
+    @pledges = Pledge.all
+
+    @projects_funded = []
+    @pledges.each do |pledge|
+      unless projects.include?(pledge.project)
+        projects << pledge.project
+      end
+    end
   end
 
   def show
