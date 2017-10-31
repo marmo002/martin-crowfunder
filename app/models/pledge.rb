@@ -4,6 +4,7 @@ class Pledge < ApplicationRecord
 
   validates :dollar_amount, presence: true
   validates :user, presence: true
+  validates :dollar_amount, numericality: {greater_than: 0}
 
   validate :owner_not_pledge_own_project
 
