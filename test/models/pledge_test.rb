@@ -13,6 +13,17 @@ class PledgeTest < ActiveSupport::TestCase
     assert pledge.persisted?
   end
 
+  test 'Pledge amount must be greater than 0' do
+    pledge = Pledge.create(
+      dollar_amount: -500,
+      project: new_project,
+      user: new_user
+    )
+    pledge.save
+    refute pledge.valid?
+    refute pledge.persisted?
+  end
+
   test 'owner cannot back own project' do
     owner = new_user
     owner.save
