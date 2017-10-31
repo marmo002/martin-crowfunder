@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
     @project.end_date = params[:project][:end_date]
     @project.image = params[:project][:image]
     @project.user_id = current_user.id
+    current_user.admin = true
 
     if @project.save!
       redirect_to projects_url
