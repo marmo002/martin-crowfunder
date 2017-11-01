@@ -9,6 +9,10 @@ class Project < ActiveRecord::Base
   validate :start_date_must_be_in_future, on: :create
   validate :end_date_must_be_later_than_start_date, on: :create
 
+  def self.search(search)
+    where("lower(title )LIKE ?", "%#{search.downcase}%")
+
+  end
 
   private
 
