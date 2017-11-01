@@ -1,37 +1,50 @@
-<%= link_to "New Project", new_project_path %>
 
-<h2>Number of projects started so far: <%= @allprojects.count %> projects</h2>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-capitalize"><strong>our benchmarks</strong></h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+    <h2>Number of projects started so far: <%= @allprojects.count %> projects</h2>
 
-<h2>Projects funded: <%= @projects_funded.count %> projects</h2>
+    <h2>Projects funded: <%= @projects_funded.count %> projects</h2>
 
-<h2>Total amount collected for successful projects: $<%= @sucessful_projects_amounts.sum %></h2>
-<div>
-  <%= form_tag(@project, method: :get, id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Project name" %>
-    <%= submit_tag 'Search', name: nil, class: 'btn' %>
-    <% if params[:search]%>
+    <h2>Total amount collected for successful projects: $<%= @sucessful_projects_amounts.sum %></h2>
+  </div><!-- col-md-4 -->
+  <div class="col-md-6">
+    <div>
+      <%= form_tag(@project, method: :get, id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Project name" %>
+      <%= submit_tag 'Search', name: nil, class: 'btn' %>
+      <% if params[:search]%>
       <%= link_to 'Clear', root_url, class: 'btn' %>
-    <% end %>
-  <% end %>
+      <% end %>
+      <% end %>
 
-  <% if params[:search] && @projects.empty? %>
-    Sorry, no results for <%= params[:search] %>
-  <% end %>
-</div>
-<% @projects.each do |project| %>
-  <article class="project">
-    <%= link_to project, class: 'project-link' do %>
-      <figure class="project-image">
-        <% if project.image %>
+      <% if params[:search] && @projects.empty? %>
+      Sorry, no results for <%= params[:search] %>
+      <% end %>
+    </div>
+      <% @projects.each do |project| %>
+      <article class="project">
+        <%= link_to project, class: 'project-link' do %>
+        <figure class="project-image">
+          <% if project.image %>
           <%= image_tag project.image %>
-        <% else %>
+          <% else %>
           <%= image_tag ActionController::Base.helpers.asset_path("default.jpg") %>
+          <% end %>
+        </figure>
+        <h1 class="project-title"><%= project.title %></h1>
+        <time class="project-days-left">
+          <%= icon('clock-o') %>
+          <%= "#{time_ago_in_words(project.end_date)} #{( project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>
+          <% end %>
+        </article>
         <% end %>
-      </figure>
-      <h1 class="project-title"><%= project.title %></h1>
-      <time class="project-days-left">
-        <%= icon('clock-o') %>
-        <%= "#{time_ago_in_words(project.end_date)} #{( project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>
-    <% end %>
-  </article>
-<% end %>
+  </div><!-- col-md-6 -->
+</div><!-- row -->
