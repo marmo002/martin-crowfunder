@@ -4,6 +4,24 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @projects = @projects.order(:end_date)
+    @pledges = Pledge.all
+
+    @projects_funded = {}
+    @pledges.each do |pledge|
+      unless @projects_funded.include?(pledge.project.title)
+        @projects_funded[pledge.project.title] = 0
+      end
+      @projects_funded[pledge.project.title] += pledge.dollar_amount
+    end
+    @sucessful_projects_amounts = []
+    @projects_funded.each do |k, v|
+      if v >= Project.find_by(title: k).goal
+        @sucessful_projects_amounts << v
+      end
+    end
+
+
+
   end
 
   def show
