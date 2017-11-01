@@ -8,7 +8,11 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @pledges = @project.pledges   
+
+    unless @project.pledges.empty?
+      @pledges = @project.pledges
+    end
+
   end
 
   def new
