@@ -28,8 +28,8 @@
         <% @pledges.each do |pledge| %>
           <tr>
             <td><%= User.find(pledge.user_id).full_name %></td>
-            <td><%= pledge.dollar_amount%></td>
-            <td><%= pledge.created_at %></td>
+            <td>$<%= pledge.dollar_amount%></td>
+            <td><%= pledge.created_at.strftime("%Y/%m/%d at %H:%M:%S") %></td>
           </tr>
         <% end %>
       </table>
