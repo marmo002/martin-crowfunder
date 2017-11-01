@@ -2,8 +2,15 @@ class ProjectsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def index
+    @allprojects = Project.all
     @projects = Project.all
     @projects = @projects.order(:end_date)
+    if params[:search]
+      @projects = Project.search(params[:search]).order(created_at: :desc)
+    else
+      @projects = Project.all
+    end
+
     @pledges = Pledge.all
 
     @projects_funded = {}
@@ -19,8 +26,6 @@ class ProjectsController < ApplicationController
         @sucessful_projects_amounts << v
       end
     end
-
-
 
   end
 
