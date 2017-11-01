@@ -8,7 +8,19 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @pledges = @project.pledges   
+
+    unless @project.pledges.empty?
+      @pledges = @project.pledges
+    end
+
+    @pledges_by_current_user = []
+
+    @project.pledges.each do |pledge|
+      if pledge.user_id == current_user.id
+        @pledges_by_current_user << pledge
+      end
+    end
+
   end
 
   def new
