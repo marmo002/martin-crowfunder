@@ -1,36 +1,38 @@
-<h1>
-  <%= @project.title %><span style="font-size:12px;color:orange;">You have not backed this project</span>
-</h1>
+<div class="row">
 
-<% if @project.image.present? %>
-  <%= image_tag @project.image %>
-<% end %>
+  <div class="col-md-6">
+    <%= render 'project_info', project: @project , message: "You have not backed this project" , label: "warning", owner: false %>
+  </div>
 
-<p><%= @project.description %></p>
-<p>Goal: <%= number_to_currency(@project.goal) %></p>
-<p>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></p>
-<p>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></p>
-<p>Money raised so far: $<%= @project.pledges.map { |pledge| pledge.dollar_amount }.sum %></p>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-capitalize"><strong>Rewards</strong></h3>
+      </div>
+      <div class="panel-body">
 
-<%= form_for [@project, Pledge.new] do |f| %>
-  <%= f.number_field :dollar_amount, value: @project.rewards.minimum(:dollar_amount), step: 0.01 %>
-  <%= f.submit "Pledge" %>
-<% end %>
+        <% if @rewards.empty? %>
+            <p>There are no rewards at the moment.</p>
+        <% else %>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Pledge Amount</th>
+                <th scope="col">Reward</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @rewards.each do |reward| %>
+              <tr>
+                <td><%= number_to_currency(reward.dollar_amount) %></td>
+                <td><%= reward.description %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<h2>--------------Rewards-------------------</h2>
-<% if @rewards.empty? %>
-    <p>There are no rewards at the moment.</p>
-<% else %>
-  <table>
-    <tr>
-      <th>pledge amount</th>
-      <th>reward</th>
-    </tr>
-    <% @rewards.each do |reward| %>
-      <tr>
-        <td><%= number_to_currency(reward.dollar_amount) %></td>
-        <td><%= reward.description %></td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
+</div>
