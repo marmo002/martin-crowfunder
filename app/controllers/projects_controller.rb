@@ -37,6 +37,14 @@ class ProjectsController < ApplicationController
     @pledges = @project.pledges.order(created_at: :desc)
     @updates = @project.updates.order(created_at: :desc)
     @comments = @project.comments.order(created_at: :desc)
+
+    if logged_in? && @projectOwner == current_user
+      render :show_project_to_owner
+    elsif logged_in? && is_backer?
+      render :show_project_to_backer
+    else
+      render :show
+    end
   end
 
 
