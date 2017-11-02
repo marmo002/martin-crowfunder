@@ -11,6 +11,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Error: username and password provided are incorrect."
       render "new"
       flash.clear
+      params[:email].clear
     end
   end
 
