@@ -1,5 +1,22 @@
-<h1>Login</h1>
+<div class="row">
+  <div class="col-md-7">
+    <div class="jumbotron">
+      <h1>Need some funding?</h1>
+      <p>
+        Have a crazy brilliant idea that needs funding?
+        We want to help you make it happen!
+      </p>
+      <p>
+        <%= link_to "Sign up", new_user_path, class: "btn btn-primary btn-lg" %>
+      </p>
+    </div>
+  </div>
 
-<%= render 'form' %>
+  <div class="col-md-5">
+    <h2>Lets Prepare!</h2>
+    <p class="text-muted" >Start or backup projects</p>
 
-<%= link_to 'Back', root_path %>
+    <%= render 'form' %>
+    
+  </div>
+</div>
