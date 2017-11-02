@@ -26,10 +26,27 @@
 // .project-days-left {
 //   font-size: 0.75em;
 // }
+
+
 .thumbnail {
   padding: 15px;
+  background-color: white;
 }
-
+h2 {
+  color: $brand-primary;
+}
 .thumbnail a {
   text-decoration: none;
+}
+
+ .navbar-default {
+  background-color: #837DB9;
+  border-radius: 0;
+ }
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+.navbar-default .navbar-brand{
+  color: white;
 }

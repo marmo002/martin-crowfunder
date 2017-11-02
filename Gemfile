@@ -6,7 +6,7 @@ gem 'puma', '~> 3.0'
 
 # Styles
 gem 'bootstrap-sass', '~> 3.3.7'
-gem 'sass-rails'
+gem 'sass-rails', '>= 3.2'
 gem 'font-awesome-sass', '~> 4.7.0'
 
 # JS
