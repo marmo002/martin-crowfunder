@@ -33,6 +33,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @projectOwner = @project.user
+    @rewards = @project.rewards
     @pledges = @project.pledges.order(created_at: :desc)
     @updates = @project.updates.order(created_at: :desc)
     @comments = @project.comments.order(created_at: :desc)
