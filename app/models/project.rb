@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  has_many :updates
   has_many :rewards
   has_many :pledges
   has_many :users, through: :pledges # backers
@@ -14,8 +15,8 @@ class Project < ActiveRecord::Base
 
   end
 
-  private
 
+  private
 
   def start_date_must_be_in_future
     today = Date.today
