@@ -13,9 +13,11 @@ class ApplicationController < ActionController::Base
   def is_backer?()
     @pledges_by_current_user = []
 
-    @pledges.each do |pledge|
-      if pledge.user_id == current_user.id
-        @pledges_by_current_user << pledge
+    if logged_in?
+      @pledges.each do |pledge|
+        if pledge.user_id == current_user.id
+          @pledges_by_current_user << pledge
+        end
       end
     end
 
@@ -24,6 +26,7 @@ class ApplicationController < ActionController::Base
     else
       return true
     end
+
   end
 
 end

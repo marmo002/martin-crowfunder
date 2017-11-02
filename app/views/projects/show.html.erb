@@ -27,7 +27,7 @@
 <p>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></p>
 <p>Money raised so far: $<%= @project.pledges.map { |pledge| pledge.dollar_amount }.sum %></p>
 
-<% #pledge button not accessible to project owner %>
+<% #pledge form not accessible to project owner %>
 <% if @projectOwner != current_user %>
   <%= form_for [@project, Pledge.new] do |f| %>
     <%= f.number_field :dollar_amount, value: @project.rewards.minimum(:dollar_amount), step: 0.01 %>
@@ -100,7 +100,29 @@
   <% end %>
 
 <% #backer comments section accessible only to backers and project owner %>
+<% if is_backer? || @projectOwner == current_user%>
+  <h2>-------------Comments--------------------</h2>
 
+  <% if @comments.empty? %>
+    <p>There are no comments at the moment</p>
+  <% else %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Date/Time</th>
+        <th>Comment</th>
+      </tr>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.full_name %></td>
+          <td><%= comment.created_at.strftime("%Y/%m/%d at %H:%M:%S") %></td>
+          <td><%= comment.comment %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+<% end %>
 
 <% #Add reward and add update buttons acessisble only to the project owner  %>
   <% if @projectOwner == current_user %>
@@ -112,5 +134,5 @@
 
 <% #Add comment button accessible only to backers %>
 <% if is_backer? %>
-  <%= link_to "Add Comment", new_project_update_path(@project) %>
+  <%= link_to "Add Comment", new_project_comment_path(@project) %>
 <% end %>
