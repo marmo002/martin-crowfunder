@@ -1,78 +1,102 @@
-<h1>
-  <%= @project.title %>  <span style="font-size:12px;color:green;">You have already backed this project</span>
-</h1>
+<div class="row">
 
-<% if @project.image.present? %>
-  <%= image_tag @project.image %>
-<% end %>
+  <div class="col-md-6">
+    <%= render 'project_info', project: @project , message: "You have already backed this project" , label: "success",owner: false %>
+  </div>
 
-<p><%= @project.description %></p>
-<p>Goal: <%= number_to_currency(@project.goal) %></p>
-<p>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></p>
-<p>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></p>
-<p>Money raised so far: $<%= @project.pledges.map { |pledge| pledge.dollar_amount }.sum %></p>
+  <div class="col-md-6">
 
-<%= form_for [@project, Pledge.new] do |f| %>
-  <%= f.number_field :dollar_amount, value: @project.rewards.minimum(:dollar_amount), step: 0.01 %>
-  <%= f.submit "Pledge" %>
-<% end %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-capitalize"><strong>Rewards</strong></h3>
+      </div>
+      <div class="panel-body">
 
-<h2>-------------Updates--------------------</h2>
-<% if @updates.empty? %>
-  <p>There are no updates at the moment</p>
-<% else %>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Date/Time</th>
-      <th>Note</th>
-    </tr>
-    <% @updates.each do |update| %>
-      <tr>
-        <td><%= @projectOwner.full_name %></td>
-        <td><%= update.created_at.strftime("%Y/%m/%d at %H:%M:%S") %></td>
-        <td><%= update.note %></td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
+        <% if @rewards.empty? %>
+            <p>There are no rewards at the moment.</p>
+        <% else %>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Pledge Amount</th>
+                <th scope="col">Reward</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @rewards.each do |reward| %>
+              <tr>
+                <td><%= number_to_currency(reward.dollar_amount) %></td>
+                <td><%= reward.description %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+      </div>
+    </div>
 
-<h2>--------------Rewards-------------------</h2>
-<% if @rewards.empty? %>
-    <p>There are no rewards at the moment.</p>
-<% else %>
-  <table>
-    <tr>
-      <th>pledge amount</th>
-      <th>reward</th>
-    </tr>
-    <% @rewards.each do |reward| %>
-      <tr>
-        <td><%= number_to_currency(reward.dollar_amount) %></td>
-        <td><%= reward.description %></td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-capitalize"><strong>Updates</strong></h3>
+      </div>
+      <div class="panel-body">
+        <% if @updates.empty? %>
+          <p>There are no updates at the moment</p>
+        <% else %>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">name</th>
+                <th scope="col">date/time</th>
+                <th scope="col">note</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @updates.each do |update| %>
+              <tr>
+                <td><%= @projectOwner.full_name %></td>
+                <td><%= update.created_at.strftime("%Y/%m/%d at %H:%M") %></td>
+                <td><%= update.note %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+    </div>
 
-<h2>-------------Comments--------------------</h2>
-<% if @comments.empty? %>
-  <p>There are no comments at the moment</p>
-<% else %>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Date/Time</th>
-      <th>Comment</th>
-    </tr>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.user.full_name %></td>
-        <td><%= comment.created_at.strftime("%Y/%m/%d at %H:%M:%S") %></td>
-        <td><%= comment.comment %></td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
-<br>
-<%= link_to "Add Comment", new_project_comment_path(@project) %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-capitalize"><strong>Comments</strong></h3>
+      </div>
+      <div class="panel-body">
+        <% if @comments.empty? %>
+          <p>There are no comments at the moment</p>
+        <% else %>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">name</th>
+                <th scope="col">date/time</th>
+                <th scope="col">comment</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @comments.each do |comment| %>
+              <tr>
+                <td><%= comment.user.full_name %></td>
+                <td><%= comment.created_at.strftime("%Y/%m/%d at %H:%M:%S") %></td>
+                <td><%= comment.comment %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        <% end %>
+        <br>
+        <%= link_to "Add Comment", new_project_comment_path(@project) %>
+      </div>
+    </div>
+
+  </div>
+
+</div>
