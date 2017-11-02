@@ -2,6 +2,8 @@
 // Read more: https://necolas.github.io/normalize.css/
 // You can find this file in vendor/assets/stylesheets
 @import 'normalize';
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 // Third-party stylesheets
 @import "font-awesome-sprockets";
@@ -14,8 +16,6 @@
 @import 'forms';
 @import 'typography';
 
+
 // Module styles
 @import 'projects';
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
