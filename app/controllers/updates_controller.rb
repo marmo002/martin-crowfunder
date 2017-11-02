@@ -2,7 +2,11 @@ class UpdatesController < ApplicationController
   before_action :load_project
 
   def new
-    @update = Update.new
+    if logged_in? && current_user == @project.user
+      @update = Update.new
+    else
+      render 'layouts/denied'
+    end
   end
 
   def create
@@ -13,11 +17,9 @@ class UpdatesController < ApplicationController
     if @update.save!
       flash[:notice] = "Update added to project"
       redirect_to project_path(params[:project_id])
-      flash.clear
     else
       render :new
     end
-
   end
 
   private
