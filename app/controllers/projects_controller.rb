@@ -35,6 +35,7 @@ class ProjectsController < ApplicationController
     @projectOwner = @project.user
     @pledges = @project.pledges.order(created_at: :desc)
     @updates = @project.updates.order(created_at: :desc)
+    @comments = @project.comments.order(created_at: :desc)
   end
 
 
