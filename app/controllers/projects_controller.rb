@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
+
   def index
     @allprojects = Project.all
     @projects = Project.all
-    @projects = @projects.order(:end_date)
+    @projects = @projects.order(created_at: :desc)
     if params[:search]
       @projects = Project.search(params[:search]).order(created_at: :desc)
     else
@@ -31,20 +32,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-
-    unless @project.pledges.empty?
-      @pledges = @project.pledges
-    end
-
-    @pledges_by_current_user = []
-
-    @project.pledges.each do |pledge|
-      if pledge.user_id == current_user.id
-        @pledges_by_current_user << pledge
-      end
-    end
-
+    @projectOwner = @project.user
+    @pledges = @project.pledges.order(created_at: :desc)
+    @updates = @project.updates.order(created_at: :desc)
+    @comments = @project.comments.order(created_at: :desc)
   end
+
+
 
   def new
     @project = Project.new
@@ -66,6 +60,8 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
-   end
+
+  end
+
 
 end
