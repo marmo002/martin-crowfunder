@@ -1,10 +1,12 @@
 // Place all the styles related to the UserSessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.jumbotron {
+main .jumbotron {
   position: relative;
   color: white;
   background: url(https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg?h=350&auto=compress&cs=tinysrgb);
   background-size: 100% 100%;
+  padding: 120px 60px;
+  margin-bottom: 100px;
   overflow: hidden;
 }

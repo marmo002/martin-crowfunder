@@ -21,8 +21,47 @@
 @import 'projects';
 @import 'user_sessions';
 
-
+body {
+  // position: relative;
+  padding-top: 70px;
+}
+main{
+  // margin-top: 90px;
+}
 footer {
-  background: black;
+  background: #535355;
+  padding: 40px 0;
+}
+
+footer p{
+  color: #F7F7F7;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 12px 0 10px 0;
+}
+footer p:nth-child(2) {
+  color: #7c7c7f;
+  font-size: 14px;
+  font-weight:normal;
+  text-transform:none;
+}
+footer .jumbotron {
+  background: #535355;
   color: white;
+  margin-bottom: 0;
+}
+
+footer .nav a {
+  border-bottom: solid 1px #7c7c7f;
+  color: #7c7c7f;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-left: 0;
+}
+
+footer .nav a:hover {
+  border-bottom: solid 1px white;
+  color: white;
+  background: none;
 }
