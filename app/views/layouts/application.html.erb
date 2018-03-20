@@ -59,73 +59,42 @@
         <%= yield %>
       </div>
     </main>
+    
+    <footer class="container-fluid">
+      <div class="row">
+        <div class="jumbotron footer_banner col-md-5">
+          <p>Bitmaker project</p>
+          <h1>Crowfunder</h1>
+          <p class="footer_about">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Illum neque expedita praesentium quis ab asperiores saepe.ewi
+          </p>
+          <p>Copyright &#169; <%= Time.now.strftime("%Y") %></p>
+        </div>
 
-    <footer>
-      <div class="container">
-        <div class="row">
-
-          <div class="col-md-12">
-            <div class="jumbotron">
-              <div class="container">
-                <blockquote>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                </blockquote>
-                <small>A Bitmaker assignment</small>
-              </div>
-            </div>
-          </div><!-- col-md-8 -->
-
-        </div><!-- row -->
-        <div class="row">
-          <div class="col-md-3">
-
-            <%= link_to "Crowdfunder", root_path, class: "btn btn-primary" %>
-
-          </div><!-- col-md-4 -->
-
-          <div class="col-md-2">
-
-              <ul class="nav nav-stacked">
-                <p>Navigation</p>
-                <li><%= link_to root_path do %>
-                    &#8594; Home
-                  <% end %>
-                </li>
-                <% if current_user %>
-                <li><%= link_to new_project_path do %>
-                    &#8594; New Project
-                  <% end %>
-                </li>
-                <li><%= link_to :logout, method: :delete do %>
-                  &#8594; Logout
-                <% end %>
-                </li>
-                <% else %>
-                <li><%= link_to :login do %>
-                  &#8594; Login
-                <% end %>
-                </li>
-                <li><%= link_to new_user_path do %>
-                  &#8594; Register
-                  <% end %>
-                </li>
-
-                <% end %>
-              </ul>
-
-
-          </div><!-- col-md-2 -->
-          <div class="col-md-2">
-              <p>About</p>
-              <p>
-                Bitmaker Lab project made with Ruby on Rails for functinality
-                and bootstrap for styling.
-              </p>
-
-          </div><!-- col-md-2 -->
-        </div><!-- row -->
-
+        <div class="col-md-2">
+          <h3>Nav</h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h3>links</h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="#">linkedIn</a></li>
+            <li role="presentation"><a href="#">github</a></li>
+            <li role="presentation"><a href="#">porfolio</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h3>Raise it up!</h3>
+          <p>Brilliant ideas should always come to life</p>
+          <p>
+            <%= link_to "Sign up", new_user_path, class: "btn btn-default btn-lg" %>
+          </p>
+        </div>
       </div>
     </footer>
   </body>
