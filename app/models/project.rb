@@ -13,7 +13,6 @@ class Project < ActiveRecord::Base
 
   def self.search(search)
     where("lower(title )LIKE ?", "%#{search.downcase}%")
-
   end
 
 
