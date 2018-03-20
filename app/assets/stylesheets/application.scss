@@ -45,8 +45,16 @@ footer {
     .footer_banner p {
       margin: 0;
       text-transform: capitalize;
+      color: #707070;
+    }
+
+    p.footer_about {
+      font-size: 14px;
     }
 
     .footer_banner h1 {
       margin: 0;
+      font-weight: 600!important;
+      line-height: 0.8!important;
+      margin-bottom: 30px;
     }
