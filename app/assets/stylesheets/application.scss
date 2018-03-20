@@ -27,8 +27,26 @@ main {
 footer {
   background: #3A3B3F;
   padding: 60px 15px;
+  overflow: hidden;
 }
+
+  footer div {
+    float: left;
+    padding: 0 15px;
+  }
 
   footer .footer_banner {
     padding: 0!important;
+    margin-bottom: 0;
+    background: #3A3B3F;
+    color: white;
   }
+
+    .footer_banner p {
+      margin: 0;
+      text-transform: capitalize;
+    }
+
+    .footer_banner h1 {
+      margin: 0;
+    }

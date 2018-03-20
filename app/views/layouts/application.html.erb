@@ -62,19 +62,16 @@
 
     <footer class="container-fluid">
       <div class="row">
-        <div class="col-sm-3">
-          <div class="jumbotron footer_banner">
-            <h1>Crowfunder</h1>
-            <p>a bitmaker project</p>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <h3>About</h3>
+        <div class="jumbotron footer_banner col-md-5">
+          <p>A bitmaker project</p>
+          <h1>Crowfunder</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Illum neque expedita praesentium quis ab asperiores saepe.</p>
+            Illum neque expedita praesentium quis ab asperiores saepe.ewi
+          </p>
         </div>
-        <div class="col-sm-3">
+
+        <div class="col-md-2">
           <h3>Nav</h3>
           <ul class="nav nav-pills nav-stacked">
             <li role="presentation"><a href="#">Home</a></li>
@@ -82,13 +79,20 @@
             <li role="presentation"><a href="#">Messages</a></li>
           </ul>
         </div>
-        <div class="col-sm-3">
+        <div class="col-md-2">
           <h3>links</h3>
           <ul class="nav nav-pills nav-stacked">
             <li role="presentation"><a href="#">linkedIn</a></li>
             <li role="presentation"><a href="#">github</a></li>
             <li role="presentation"><a href="#">porfolio</a></li>
           </ul>
+        </div>
+        <div class="col-md-3">
+          <h3>Raise it up!</h3>
+          <p>Brilliant ideas should always come to life</p>
+          <p>
+            <%= link_to "Sign up", new_user_path, class: "btn btn-default btn-lg" %>
+          </p>
         </div>
       </div>
     </footer>
