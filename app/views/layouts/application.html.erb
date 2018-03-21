@@ -29,18 +29,18 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Home", root_path %><span class="underline" ></span></li>
               <% if current_user %>
-              <li><%= link_to "New Project", new_project_path %></li>
-              <li><%= link_to "Logout", :logout, method: :delete %></li>
+              <li><%= link_to "New Project", new_project_path %><span class="underline" ></span></li>
+              <li><%= link_to "Logout", :logout, method: :delete %><span class="underline" ></span></li>
               <% else %>
-                <li><%= link_to "Login", :login %></li>
-                <li><%= link_to "Register", new_user_path %></li>
+                <li><%= link_to "Login", :login %><span class="underline" ></span></li>
+                <li><%= link_to "Register", new_user_path %><span class="underline" ></span></li>
               <% end %>
             </ul>
             <% if current_user %>
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "#{current_user.first_name}'s Profile", profile_path %></li>
+              <li><%= link_to "#{current_user.first_name}'s Profile", profile_path %><span class="underline" ></span></li>
             </ul>
             <% end %>
           </div><!-- /.navbar-collapse -->
@@ -59,20 +59,20 @@
         <%= yield %>
       </div>
     </main>
-    
+
     <footer class="container-fluid">
       <div class="row">
-        <div class="jumbotron footer_banner col-md-5">
-          <p>Bitmaker project</p>
+        <div class="jumbotron footer_banner col-md-4">
+          <p>Bitmaker Project</p>
           <h1>Crowfunder</h1>
           <p class="footer_about">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Illum neque expedita praesentium quis ab asperiores saepe.ewi
+            Web app built with Ruby on Rails, Custom CSS added to Bootstrap,
+            will implement AWS S3 for project and user profile images, and a contact form.
           </p>
           <p>Copyright &#169; <%= Time.now.strftime("%Y") %></p>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-2 col-md-offset-1">
           <h3>Nav</h3>
           <ul class="nav nav-pills nav-stacked">
             <li role="presentation"><a href="#">Home</a></li>
@@ -83,9 +83,9 @@
         <div class="col-md-2">
           <h3>links</h3>
           <ul class="nav nav-pills nav-stacked">
-            <li role="presentation"><a href="#">linkedIn</a></li>
-            <li role="presentation"><a href="#">github</a></li>
-            <li role="presentation"><a href="#">porfolio</a></li>
+            <li role="presentation"><a href="https://linkedin.com/in/martin-maco" target="_blank" >linkedIn</a></li>
+            <li role="presentation"><a href="https://github.com/marmo002" target="_blank" >github</a></li>
+            <li role="presentation"><a href="http://martinmaco.com" target="_blank" >porfolio</a></li>
           </ul>
         </div>
         <div class="col-md-3">

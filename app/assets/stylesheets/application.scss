@@ -17,12 +17,35 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+header nav {
+  border: none!important;
+}
+
+  header nav span.underline {
+    position: absolute;
+    width: 50%;
+    bottom: 10px;
+    height: 2px;
+    left: 50%;
+    margin-left: -25%;
+    transition: all 0.5s;
+  }
+
+  header nav a:hover {
+    color: white!important;
+  }
+
+  header nav li:hover span.underline{
+    background: white;
+  }
+
 main {
     margin:110px 0 60px;
 }
 
 footer {
   background: #3A3B3F;
+  color: white;
   padding: 60px 15px;
   overflow: hidden;
 }
@@ -45,7 +68,6 @@ footer {
 
     .footer_banner p {
       margin: 0;
-      text-transform: capitalize;
       color: #707070;
       font-size: 14px!important;
     }
@@ -61,6 +83,26 @@ footer {
       line-height: 0.8!important;
       margin-bottom: 30px;
     }
+
+    footer h3 {
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+
+    footer li a  {
+      padding-left: 0!important;
+      color: #707070;
+      text-transform: capitalize;
+    }
+      footer li a:hover {
+        background: none!important;
+        color: white;
+      }
+
+      footer li a:focus {
+        background: none!important;
+        color: #707070;
+      }
 
 // Module styles
 @import 'projects';
